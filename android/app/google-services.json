@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "328610883118",
+    "project_id": "akyazihaber-33bbf",
+    "storage_bucket": "akyazihaber-33bbf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328610883118:android:bbe17329a905bb596b61bf",
+        "android_client_info": {
+          "package_name": "com.akyazihaber.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDwtbdZd1DKOtkClJWyL97S_kc-ZqeUiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328610883118:android:4112e169adc6cbf16b61bf",
+        "android_client_info": {
+          "package_name": "com.example.akyazi_haber_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDwtbdZd1DKOtkClJWyL97S_kc-ZqeUiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
