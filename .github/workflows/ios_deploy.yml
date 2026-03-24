@@ -41,6 +41,8 @@ jobs:
         run: |
           flutter build ipa --release \
             --export-options-plist=ios/ExportOptions.plist
+          env:
+          XCODE_ALLOWPROVISIONINGUPDATES: true
       
       - name: Deploy to App Store
         uses: apple-actions/upload-testflight-build@v1
