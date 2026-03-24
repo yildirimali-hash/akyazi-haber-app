@@ -38,12 +38,14 @@ jobs:
           p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
       
       - name: Build iOS
-        run: flutter build ios --release --no-codesign
+        run: |
+          flutter build ipa --release \
+            --export-options-plist=ios/ExportOptions.plist
       
       - name: Deploy to App Store
         uses: apple-actions/upload-testflight-build@v1
         with:
-          app-path: build/ios/iphoneos/Runner.app
+          app-path: build/ios/ipa/akyazi_haber_app.ipa
           issuer-id: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           api-key-id: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           api-private-key: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
