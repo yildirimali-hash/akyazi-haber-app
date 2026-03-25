@@ -3,11 +3,18 @@
 <plist version="1.0">
 <dict>
     <key>method</key>
-    <string>app-store</string>
+    <string>app-store-connect</string>
     <key>teamID</key>
     <string>DNYATRE65Q</string>
     <key>signingStyle</key>
-    <string>automatic</string>
+    <string>manual</string>
+    <key>signingCertificate</key>
+    <string>Apple Distribution</string>
+    <key>provisioningProfiles</key>
+    <dict>
+        <key>com.akyazihaber.akyaziHaberApp</key>
+        <string>AkyaziHaberAppStore</string>
+    </dict>
     <key>uploadBitcode</key>
     <false/>
     <key>uploadSymbols</key>
