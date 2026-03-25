@@ -62,7 +62,7 @@ jobs:
       - name: Deploy to App Store
         uses: apple-actions/upload-testflight-build@v1
         with:
-          app-path: build/ios/ipa/Runner.ipa
+          app-path: ios/build/ios/ipa/Akyazı Haber.ipa
           issuer-id: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           api-key-id: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           api-private-key: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
