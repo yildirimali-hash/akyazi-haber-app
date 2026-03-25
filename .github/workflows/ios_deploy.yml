@@ -44,11 +44,13 @@ jobs:
             -configuration Release \
             -archivePath build/Runner.xcarchive \
             archive \
+            -destination "generic/platform=iOS" \
             CODE_SIGN_STYLE=Manual \
-            PROVISIONING_PROFILE_SPECIFIER="AkyaziHaberAppStore" \
-            CODE_SIGN_IDENTITY="iPhone Distribution" \
+            "CODE_SIGN_IDENTITY=iPhone Distribution" \
             DEVELOPMENT_TEAM=DNYATRE65Q \
-            -allowProvisioningUpdates
+            PROVISIONING_PROFILE_SPECIFIER="AkyaziHaberAppStore" \
+            -allowProvisioningUpdates \
+            ONLY_ACTIVE_ARCH=NO
           xcodebuild -exportArchive \
             -archivePath build/Runner.xcarchive \
             -exportOptionsPlist ExportOptions.plist \
