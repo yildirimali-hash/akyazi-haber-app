@@ -56,8 +56,8 @@ jobs:
             -exportOptionsPlist ExportOptions.plist \
             -exportPath build/ios/ipa
 
-       - name: Find IPA
-         run: find . -name "*.ipa" 2>/dev/null
+      - name: Find IPA
+        run: find . -name "*.ipa" 2>/dev/null
       
       - name: Deploy to App Store
         uses: apple-actions/upload-testflight-build@v1
