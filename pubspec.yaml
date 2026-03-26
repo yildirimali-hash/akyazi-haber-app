@@ -1,7 +1,7 @@
 name: akyazi_haber_app
 description: Akyazı Haber Mobil Uygulaması
 publish_to: 'none'
-version: 1.0.0+4
+version: 1.0.0+5
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -27,7 +27,7 @@ dependencies:
   intl: ^0.18.1
   
   # Share
-  share_plus: ^7.2.1
+  share_plus: ^10.0.0
   
   # Icons
   cupertino_icons: ^1.0.2
