@@ -101,6 +101,7 @@ class ApiService {
       if (response.statusCode == 200) {
         final decodedData = json.decode(utf8.decode(response.bodyBytes));
         print(decodedData);
+        if(decodedData['success'] == false) return null;
         return Reklam.fromJson(Map<String, dynamic>.from(decodedData));
       }
       return null;

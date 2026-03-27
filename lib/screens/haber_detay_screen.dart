@@ -33,6 +33,7 @@ class _HaberDetayScreenState extends State<HaberDetayScreen> {
   List<Haber> _ilgiliHaberler = [];
   Reklam? _haberReklam1;
   Reklam? _haberReklam2;
+  Reklam? _haberReklam3;
 
   bool _yukleniyor = true;
   bool _yorumGonderiliyor = false;
@@ -97,6 +98,13 @@ class _HaberDetayScreenState extends State<HaberDetayScreen> {
             setState(() => _haberReklam2 = reklam);
           }
         });
+
+        _apiService.getReklam('haberreklam3').then((reklam) {
+          if (mounted) {
+            setState(() => _haberReklam3 = reklam);
+          }
+        });
+
       } else {
         setState(() {
           _hata = 'Haber bulunamadı';
@@ -242,6 +250,7 @@ class _HaberDetayScreenState extends State<HaberDetayScreen> {
                               ),
                             ),
 
+                           if(_haberReklam3 != null) ReklamWidget(reklam:_haberReklam3),
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
