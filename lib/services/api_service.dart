@@ -365,7 +365,7 @@ class ApiService {
   }
 
   // FCM Token kaydet
-  Future<bool> tokenKaydet(String token) async {
+  Future<bool> tokenKaydet(String token, {String platform = 'android'}) async {
     try {
       final response = await http.post(
         Uri.parse(baseUrl),
@@ -376,6 +376,7 @@ class ApiService {
         body: {
           'islem': 'tokenkaydet',
           'token': token,
+          'platform': platform,
         },
       );
 

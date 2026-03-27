@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
 import '../screens/haber_detay_screen.dart';
+import 'package:flutter/foundation.dart';
 
 class BildirimServisi {
   static final FirebaseMessaging _messaging = FirebaseMessaging.instance;
@@ -21,6 +22,20 @@ class BildirimServisi {
 
   static Future<String?> getToken() async {
     try {
+      // iOS için önce APNs token bekle
+      if (defaultTargetPlatform == TargetPlatform.iOS) {
+        String? apnsToken;
+        int retries = 0;
+        while (apnsToken == null && retries < 5) {
+          apnsToken = await _messaging.getAPNSToken();
+          if (apnsToken == null) {
+            await Future.delayed(const Duration(seconds: 2));
+            retries++;
+          }
+        }
+        print('📱 APNs Token: $apnsToken');
+      }
+      
       final token = await _messaging.getToken();
       print('📱 FCM Token: $token');
       return token;
@@ -90,14 +105,17 @@ class BildirimServisi {
   static Future<void> _tokenGonder(String token) async {
     try {
       final apiService = ApiService();
-      final basarili = await apiService.tokenKaydet(token);
+      final platform = defaultTargetPlatform == TargetPlatform.iOS ? 'ios' : 'android';
+      final basarili = await apiService.tokenKaydet(token, platform: platform);
       if (basarili) {
-        print('✅ Token başarıyla kaydedildi');
+        print('✅ Token başarıyla kaydedildi ($platform)');
       }
     } catch (e) {
       print('❌ Token gönderilemedi: $e');
     }
   }
+
+
 }
 
 // Arka plan handler
