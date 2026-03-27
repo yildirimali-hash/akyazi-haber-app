@@ -48,6 +48,8 @@ class BildirimServisi {
   static Future<void> basla(BuildContext context) async {
     _context = context;
 
+    await Future.delayed(const Duration(seconds: 3));
+
     await izinIste();
     final token = await getToken();
     if (token != null) {
