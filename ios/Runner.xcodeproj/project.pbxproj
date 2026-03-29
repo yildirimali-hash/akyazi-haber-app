@@ -517,6 +517,7 @@
 			baseConfigurationReference = 41BBA176D3559756FBE95D31 /* Pods-RunnerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				PROVISIONING_PROFILE_SPECIFIER = "AkyaziHaberAppStore";
 				CURRENT_PROJECT_VERSION = 1;
@@ -536,6 +537,7 @@
 			baseConfigurationReference = CF96872E3A97340F9D6ADFC7 /* Pods-RunnerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				PROVISIONING_PROFILE_SPECIFIER = "AkyaziHaberAppStore";
 				CURRENT_PROJECT_VERSION = 1;
@@ -553,6 +555,7 @@
 			baseConfigurationReference = 641D40E56A8DC174C96FE519 /* Pods-RunnerTests.profile.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				PROVISIONING_PROFILE_SPECIFIER = "AkyaziHaberAppStore";
 				CURRENT_PROJECT_VERSION = 1;
