@@ -37,24 +37,21 @@ class AkyaziHaberApp extends StatefulWidget {
 class _AkyaziHaberAppState extends State<AkyaziHaberApp> {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  @override
-  void initState() {
-    super.initState();
-
-    // Bildirimleri başlat
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-  Future.delayed(const Duration(seconds: 5), () {
-    final context = navigatorKey.currentContext;
-    if (context != null) {
-      BildirimServisi.basla(context);
-    } else {
-      print('❌ Context null, bildirim başlatılamadı');
+ @override
+void initState() {
+  super.initState();
+  
+  WidgetsBinding.instance.addPostFrameCallback((_) async {
+    await Future.delayed(const Duration(seconds: 5));
+    if (mounted) {
+      print('🔔 Bildirim servisi başlatılıyor...');
+      await BildirimServisi.basla(context);
     }
   });
-});
+}
 
 
-  }
+  
 
   @override
   Widget build(BuildContext context) {
