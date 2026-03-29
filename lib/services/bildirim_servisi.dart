@@ -45,46 +45,45 @@ class BildirimServisi {
     }
   }
 
+  
   static Future<void> basla(BuildContext context) async {
     _context = context;
-
-    await Future.delayed(const Duration(seconds: 3));
-
+    
+    // Önce izin iste
     await izinIste();
+    
+    // Sonra 3 saniye bekle (iOS APNs token için)
+    await Future.delayed(const Duration(seconds: 3));
+    
+    // Token al
     final token = await getToken();
     if (token != null) {
       await _tokenGonder(token);
     }
 
-    // Uygulama AÇIKKEN bildirim geldiğinde
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       print('🔔 Bildirim geldi: ${message.notification?.title}');
-      print('📄 Data: ${message.data}');
-
-      // Bildirim otomatik gösterilir
-      // Kullanıcı tıklarsa onMessageOpenedApp çalışır
     });
 
-    // Bildirime TIKLAYINCA (uygulama açıkken veya arka planda)
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print('🔔 Bildirime tıklandı!');
       _bildirimeTiklandi(message);
     });
 
-    // Uygulama KAPALI iken bildirime tıklanınca
     _messaging.getInitialMessage().then((RemoteMessage? message) {
       if (message != null) {
-        print('🔔 Uygulama kapalıyken bildirime tıklandı!');
-        // Biraz bekle (uygulama yüklenmesi için)
         Future.delayed(const Duration(seconds: 1), () {
           _bildirimeTiklandi(message);
         });
       }
     });
 
-    // Arka plan handler
     FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
   }
+
+
+
+
 
   // Bildirime tıklama işlemi
   static void _bildirimeTiklandi(RemoteMessage message) {
