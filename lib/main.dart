@@ -43,10 +43,15 @@ class _AkyaziHaberAppState extends State<AkyaziHaberApp> {
 
     // Bildirimleri başlat
     WidgetsBinding.instance.addPostFrameCallback((_) {
-     Future.delayed(const Duration(seconds: 5), () {
-      BildirimServisi.basla(navigatorKey.currentContext!);
-      });
-    });
+  Future.delayed(const Duration(seconds: 5), () {
+    final context = navigatorKey.currentContext;
+    if (context != null) {
+      BildirimServisi.basla(context);
+    } else {
+      print('❌ Context null, bildirim başlatılamadı');
+    }
+  });
+});
 
 
   }
