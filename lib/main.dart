@@ -43,7 +43,7 @@ void initState() {
   super.initState();
   
   WidgetsBinding.instance.addPostFrameCallback((_) async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 1));
     print('🔔 Bildirim servisi başlatılıyor...');
     await BildirimServisi.basla(navigatorKey: navigatorKey);
   });

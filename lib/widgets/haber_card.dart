@@ -107,24 +107,6 @@ class HaberCard extends StatelessWidget {
                     ),
                   ],
 
-                  // Görüntülenme
-                  if (haber.goruntulenme != null) ...[
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Icon(Icons.visibility,
-                            size: 14, color: Colors.grey[600]),
-                        const SizedBox(width: 4),
-                        Text(
-                          '${haber.goruntulenme} görüntülenme',
-                          style: TextStyle(
-                            color: Colors.grey[600],
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
                 ],
               ),
             ),
