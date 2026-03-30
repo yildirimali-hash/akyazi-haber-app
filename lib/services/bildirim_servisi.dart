@@ -46,7 +46,7 @@ class BildirimServisi {
   }
 
   
-  static Future<void> basla(required {GlobalKey<NavigatorState> navigatorKey}) async {
+  static Future<void> basla({required GlobalKey<NavigatorState> navigatorKey}) async {
     BildirimServisi.navigatorKey = navigatorKey;
     
     // Önce izin iste
