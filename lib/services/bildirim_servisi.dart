@@ -46,7 +46,7 @@ class BildirimServisi {
   }
 
   
-  static Future<void> basla(BuildContext context, , {GlobalKey<NavigatorState>? navKey}) async {
+  static Future<void> basla(BuildContext context, {GlobalKey<NavigatorState>? navKey}) async {
     _context = context;
    navigatorKey = navKey;
     
