@@ -45,7 +45,7 @@ void initState() {
     await Future.delayed(const Duration(seconds: 5));
     if (mounted) {
       print('🔔 Bildirim servisi başlatılıyor...');
-      await BildirimServisi.basla(context);
+      await BildirimServisi.basla(context, navKey: navigatorKey);
     }
   });
 }

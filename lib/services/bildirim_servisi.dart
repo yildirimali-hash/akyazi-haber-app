@@ -46,8 +46,9 @@ class BildirimServisi {
   }
 
   
-  static Future<void> basla(BuildContext context) async {
+  static Future<void> basla(BuildContext context, , {GlobalKey<NavigatorState>? navKey}) async {
     _context = context;
+   navigatorKey = navKey;
     
     // Önce izin iste
     await izinIste();
@@ -88,23 +89,28 @@ class BildirimServisi {
   // Bildirime tıklama işlemi
   static void _bildirimeTiklandi(RemoteMessage message) {
     print('📨 Message data: ${message.data}');
-    print('📨 Message notification: ${message.notification?.title}');
-    
     final haberId = message.data['haberid']?.toString();
     print('📰 Haber ID: $haberId');
 
-    if (haberId != null && haberId.isNotEmpty && _context != null) {
-      print('📰 Haber açılıyor: $haberId');
-      Navigator.push(
-        _context!,
-        MaterialPageRoute(
-          builder: (context) => HaberDetayScreen(haberId: haberId),
-        ),
-      );
-    } else {
-      print('⚠️ Haber ID bulunamadı veya context yok. haberId: $haberId, context: $_context');
+    if (haberId != null && haberId.isNotEmpty) {
+      // navigatorKey ile context beklemeden yönlendir
+      Future.delayed(const Duration(seconds: 1), () {
+        final context = _context ?? navigatorKey?.currentContext;
+        if (context != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HaberDetayScreen(haberId: haberId),
+            ),
+          );
+        } else {
+          print('⚠️ Context hala null!');
+        }
+      });
     }
   }
+
+  static GlobalKey<NavigatorState>? navigatorKey;
 
 
 
