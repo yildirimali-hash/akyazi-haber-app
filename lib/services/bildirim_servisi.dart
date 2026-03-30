@@ -93,7 +93,7 @@ class BildirimServisi {
 
     if (haberId != null && haberId.isNotEmpty) {
       // navigatorKey ile context beklemeden yönlendir
-      Future.delayed(const Duration(miliseconds: 200), () {
+      Future.delayed(const Duration(milliseconds: 200), () {
         final context = navigatorKey?.currentContext;
         if (context != null) {
           Navigator.push(
