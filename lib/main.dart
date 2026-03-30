@@ -5,6 +5,8 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'screens/ana_sayfa_screen_yeni.dart';
 import 'services/bildirim_servisi.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -35,23 +37,18 @@ class AkyaziHaberApp extends StatefulWidget {
 }
 
 class _AkyaziHaberAppState extends State<AkyaziHaberApp> {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
- @override
+  
+@override
 void initState() {
   super.initState();
   
   WidgetsBinding.instance.addPostFrameCallback((_) async {
-    await Future.delayed(const Duration(seconds: 5));
-    if (mounted) {
-      print('🔔 Bildirim servisi başlatılıyor...');
-      await BildirimServisi.basla(context, navKey: navigatorKey);
-    }
+    await Future.delayed(const Duration(seconds: 3));
+    print('🔔 Bildirim servisi başlatılıyor...');
+    await BildirimServisi.basla(navigatorKey: navigatorKey);
   });
 }
-
-
-  
+ 
 
   @override
   Widget build(BuildContext context) {

@@ -46,9 +46,8 @@ class BildirimServisi {
   }
 
   
-  static Future<void> basla(BuildContext context, {GlobalKey<NavigatorState>? navKey}) async {
-    _context = context;
-   navigatorKey = navKey;
+  static Future<void> basla(required {GlobalKey<NavigatorState> navigatorKey}) async {
+    BildirimServisi.navigatorKey = navigatorKey;
     
     // Önce izin iste
     await izinIste();
@@ -95,7 +94,7 @@ class BildirimServisi {
     if (haberId != null && haberId.isNotEmpty) {
       // navigatorKey ile context beklemeden yönlendir
       Future.delayed(const Duration(seconds: 1), () {
-        final context = _context ?? navigatorKey?.currentContext;
+        final context = navigatorKey?.currentContext;
         if (context != null) {
           Navigator.push(
             context,
