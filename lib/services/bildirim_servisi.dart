@@ -87,11 +87,14 @@ class BildirimServisi {
 
   // Bildirime tıklama işlemi
   static void _bildirimeTiklandi(RemoteMessage message) {
+    print('📨 Message data: ${message.data}');
+    print('📨 Message notification: ${message.notification?.title}');
+    
     final haberId = message.data['haberid']?.toString();
+    print('📰 Haber ID: $haberId');
 
-    if (haberId != null && _context != null) {
+    if (haberId != null && haberId.isNotEmpty && _context != null) {
       print('📰 Haber açılıyor: $haberId');
-
       Navigator.push(
         _context!,
         MaterialPageRoute(
@@ -99,9 +102,11 @@ class BildirimServisi {
         ),
       );
     } else {
-      print('⚠️ Haber ID bulunamadı veya context yok');
+      print('⚠️ Haber ID bulunamadı veya context yok. haberId: $haberId, context: $_context');
     }
   }
+
+
 
   static Future<void> _tokenGonder(String token) async {
     try {
